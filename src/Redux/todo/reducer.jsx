@@ -1,4 +1,4 @@
-import { ADD, CLEARALL, COMPLETEALL, TODOCOLORCHANGE, TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType";
+import { ADD, CLEARALL, COMPLETEALL, TODOCOLORCHANGE, TODODELETE, TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType";
 import { initalState } from "./initialState";
 
 const nextTodoId = (todos) => {
@@ -54,6 +54,9 @@ const reducer = (state = initalState, action) => {
                     }
                 }
             })
+
+        case TODODELETE:
+            return state.filter(todo => todo.id !== action.payload)
     
         default:
             return state;
