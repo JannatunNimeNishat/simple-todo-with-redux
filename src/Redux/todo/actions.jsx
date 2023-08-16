@@ -1,4 +1,4 @@
-import { ADD, CLEARALL, COMPLETEALL, TODOCOLORCHANGE, TODODELETE,  TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType"
+import { ADD,  CLEARCOMPLETED,  COMPLETEALL, TODOCOLORCHANGE, TODODELETE,  TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType"
 
 export  const addTodo = (value) =>{
     return {
@@ -14,9 +14,9 @@ export const completeAll = () =>{
     }
 };
 
-export const clearAll = () =>{
+export const clearCompleted = () =>{
     return {
-        type: CLEARALL,
+        type: CLEARCOMPLETED,
     }
 };
 

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTodo } from "../Redux/todo/actions";
+import { addTodo, clearCompleted, completeAll } from "../Redux/todo/actions";
 import { useState } from "react";
 
 
@@ -11,14 +11,25 @@ const Header = () => {
 
     const handleToDoInput = (e) =>{
         setTodoInput(e.target.value);
+      
     }
 
     const handleAddTodo = (e) =>{
         e.preventDefault()
-        console.log(todoInput);
-        dispatch(addTodo(todoInput))
+        dispatch(addTodo(todoInput));
+       setTodoInput('');
+       
     }
-    console.log(todoInput);
+   
+
+    const handleAllCompleted = () =>{
+        dispatch(completeAll())
+    }
+
+    const handleClearComplete = () =>{
+        dispatch(clearCompleted())
+    }
+
     return (
         <div>
             <form onSubmit={handleAddTodo}
@@ -34,6 +45,7 @@ const Header = () => {
                     placeholder="Type your todo"
                     className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
                     name="todoInputElement"
+                    value = {todoInput}
                     onChange={() => handleToDoInput(event)}
                 />
                 <button
@@ -43,7 +55,9 @@ const Header = () => {
             </form>
 
             <ul className="flex justify-between my-4 text-xs text-gray-500">
-                <li className="flex space-x-1 cursor-pointer">
+                <li className="flex space-x-1 cursor-pointer"
+                onClick={handleAllCompleted}
+                >
                     <img
                         className="w-4 h-4"
                         src="./images/double-tick.png"
@@ -51,7 +65,7 @@ const Header = () => {
                     />
                     <span>Complete All Tasks</span>
                 </li>
-                <li className="cursor-pointer">Clear completed</li>
+                <li className="cursor-pointer" onClick={handleClearComplete}>Clear completed</li>
             </ul>
         </div>
     );

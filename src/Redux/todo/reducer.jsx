@@ -1,4 +1,4 @@
-import { ADD, CLEARALL, COMPLETEALL, TODOCOLORCHANGE, TODODELETE, TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType";
+import { ADD,  CLEARCOMPLETED,  COMPLETEALL, TODOCOLORCHANGE, TODODELETE, TODO_COMPLETE_INCOMPLETE_TOGGLE } from "./actionType";
 import { initalState } from "./initialState";
 
 const nextTodoId = (todos) => {
@@ -25,7 +25,7 @@ const reducer = (state = initalState, action) => {
                 }
             })
 
-        case CLEARALL:
+        case CLEARCOMPLETED:
             return state.filter(todo => !todo.completed)
     
         case TODO_COMPLETE_INCOMPLETE_TOGGLE:
