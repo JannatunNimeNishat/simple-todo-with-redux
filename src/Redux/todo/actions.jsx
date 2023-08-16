@@ -28,10 +28,10 @@ export const todoCompleteIncompleteToggle = (id) =>{
     }
 };
 
-export const todoColorChange = (value) =>{
+export const todoColorChange = (id,color) =>{
     return {
         type:TODOCOLORCHANGE,
-        payload:value,
+        payload:{id,color},
     }
 };
 
