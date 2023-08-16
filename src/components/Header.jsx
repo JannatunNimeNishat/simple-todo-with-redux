@@ -1,9 +1,27 @@
+import { useDispatch } from "react-redux";
+import { addTodo } from "../Redux/todo/actions";
+import { useState } from "react";
 
 
 const Header = () => {
+
+    const [todoInput, setTodoInput] = useState();
+
+    const dispatch = useDispatch();
+
+    const handleToDoInput = (e) =>{
+        setTodoInput(e.target.value);
+    }
+
+    const handleAddTodo = (e) =>{
+        e.preventDefault()
+        console.log(todoInput);
+        dispatch(addTodo(todoInput))
+    }
+    console.log(todoInput);
     return (
         <div>
-            <form
+            <form onSubmit={handleAddTodo}
                 className="flex items-center bg-gray-100 px-4 py-4 rounded-md"
             >
                 <img
@@ -15,6 +33,8 @@ const Header = () => {
                     type="text"
                     placeholder="Type your todo"
                     className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
+                    name="todoInputElement"
+                    onChange={() => handleToDoInput(event)}
                 />
                 <button
                     type="submit"
