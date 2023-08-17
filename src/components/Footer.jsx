@@ -1,15 +1,39 @@
+import { useDispatch, useSelector } from "react-redux";
+import { status } from "../Redux/filter/actions";
 
 
 const Footer = () => {
+
+    const todos = useSelector(state => state.todos);
+   
+    const todoRemaining = todos.filter(todo => !todo.completed).length;
+    const dispatch = useDispatch();
+
+    const numberOfTodos = (no_of_todos) => {
+        switch (no_of_todos) {
+            case 0:
+                return 'No task remaining ';
+            case 1:
+                return '1 task remaining';
+            default:
+                return `${no_of_todos} tasks`
+        }
+    }
+
+    const handleStatusChange = (value) =>{
+        dispatch(status(value));
+        
+    }
+
     return (
         <div className="mt-4 flex justify-between text-xs text-gray-500">
-            <p>2 tasks left</p>
+            <p>{numberOfTodos(todoRemaining)}</p>
             <ul className="flex space-x-1 items-center text-xs">
-                <li className="cursor-pointer font-bold">All</li>
+                <li className="cursor-pointer font-bold" onClick={()=> handleStatusChange('All')}>All</li>
                 <li>|</li>
-                <li className="cursor-pointer">Incomplete</li>
+                <li className="cursor-pointer" onClick={()=> handleStatusChange('Incomplete')}>Incomplete</li>
                 <li>|</li>
-                <li className="cursor-pointer">Complete</li>
+                <li className="cursor-pointer" onClick={()=> handleStatusChange('Complete')}>Complete</li>
                 <li></li>
                 <li></li>
                 <li

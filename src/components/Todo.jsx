@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { todoColorChange, todoCompleteIncompleteToggle, todoDelete } from "../Redux/todo/actions";
 
 
 const Todo = ({ todo }) => {
-    console.log(todo);
-
+    // console.log(todo);
+    /* const filters = useSelector(state => state.filters)
+    console.log(filters); */
     const dispatch = useDispatch();
 
     const handleToggle = (id) =>{

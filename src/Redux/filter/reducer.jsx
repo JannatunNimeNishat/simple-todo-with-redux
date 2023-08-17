@@ -4,6 +4,7 @@ import { initalState } from "./initialState";
 const reducer = (state = initalState, action) => {
     switch (action.type) {
         case STATUS:
+        //    console.log(action.payload);
             return {
                 ...state,
                 status: action.payload,
