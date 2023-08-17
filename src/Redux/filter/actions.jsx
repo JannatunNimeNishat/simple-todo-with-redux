@@ -1,13 +1,13 @@
 import { STATUS,COLORS } from "./actionTypes"
 
-export const status = (value) =>{
+export const changeStatus = (value) =>{
     return {
         type:STATUS,
         payload:value,
     }
 }
 
-export const colors = (color,changeType) =>{
+export const changeColors = (color,changeType) =>{
     return {
         type:COLORS,
         payload:{color, changeType},
