@@ -1,4 +1,4 @@
 export const initalState = {
     status:'All',
-    colors:['green']
+    colors:[]
 }
